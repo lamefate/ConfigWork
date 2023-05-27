@@ -6,4 +6,18 @@
 
 Второй класс отвечает за все основные функции работы с файлом `.ini`, в список таких функций входит: `create_config()`, `read_config()`, `update_key()`, `remove_key()`.
 
-Примеры кода с этой библиотекой находятся ниже.
+
+```python
+from config import ConfigWork
+
+settings = ConfigWork("config/conf.ini")
+settings.init()
+
+settings.create_config("conf", a="5", b="7")
+
+result = settings.read_config("conf", ["a","b"])
+
+settings.update_key("conf", a="9", b="11")
+
+settings.remove_key("conf", ["a","b"])
+```
