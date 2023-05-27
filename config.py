@@ -10,18 +10,18 @@ class InitStatusError(Exception):
 
 class ConfigWork:
     # задает статус и путь к конфигу
-    def __init__(self, path: str = 'config/config.ini'):
+    def __init__(self, path = 'config/config.ini'):
         self.INIT_STATUS = 0
         self.path = path
 
     # инициализирует, обрабатывает путь к папке
     def init(self):
-        path = self.path.split('/')[0]
-        if not path.exists(path):
-            mkdir(path)
+        cpath = self.path.split('/')[0]
+        if not path.exists(cpath):
+            mkdir(cpath)
         else:
-            if not path.isdir(path):
-                mkdir(path)
+            if not path.isdir(cpath):
+                mkdir(cpath)
         self.INIT_STATUS = 1
 
     # проверяет статус инициализации
