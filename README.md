@@ -1,23 +1,26 @@
 # ConfigWork
 
-Код содержит два класса: `InitStatusError` и `ConfigWork`.
-
-Первый класс из вышеописанных необходим для выбрасывания исключения, если Вы вдруг не вызывали `ConfigWork().init()` функцию, необходимую для первоначальной работы с папками.
-
-Второй класс отвечает за все основные функции работы с файлом `.ini`.
-
+Установить библиотеку можно так:
+``` pip install siconfig ```
 
 ```python
-from config import ConfigWork
+from siconfig import ConfigWork
 
 settings = ConfigWork("config/conf.ini")
-settings.init()
+settings.init_config()
 
-settings.create_config("conf", a="5", b="7")
+# create_config(self, section: str, **pairs)
+settings.create_config('config', version='1.5', api='1.2')
 
-result = settings.read_config("conf", ["a","b"])
+# get_config(self)
+result = settings.get_config()
 
-settings.update_key("conf", a="9", b="11")
+# get_key(self, key: str)
+key = settings.get_key('version')
 
-settings.remove_key("conf", ["a","b"])
+# set_key(self, key: str, value: str)
+settings.set_key(key='version', value='1.4')
+
+# remove_key(self, key: str)
+settings.remove_key(key='api')
 ```
