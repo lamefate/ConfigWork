@@ -31,11 +31,11 @@ class ConfigWork:
     # ОСНОВНЫЕ ФУНКЦИИ
     def init_config(self):
         folder, file = path.split(self.cpath)
-        if not path.exists(self.r(folder)):
-            if '.' in file:
+        if folder != '':
+            if not path.exists(self.r(folder)):
                 makedirs(self.r(folder))
-            else:
-                raise WrongPathError
+        if '.' not in file:
+            raise WrongPathError
         self.status = True
     
     
